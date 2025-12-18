@@ -17,6 +17,20 @@ h2 {
   color: #176B39;
   margin-bottom: 10px;
 }
+.datetime-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 260px;
+  margin: 0 auto 14px auto;
+  padding: 6px 14px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #41e671 0%, #176B39 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,.15);
+}
 .card {
   background: #fff;
   border-radius: 12px;
@@ -69,6 +83,10 @@ button:active {
 
 <body>
 
+<div class="datetime-bar">
+  <span id="currentDate">--/--/----</span>
+  <span id="currentTime">--:--:--</span>
+</div>
 <h2>VISITOR PARKING</h2>
 
 <div class="card">
@@ -159,6 +177,27 @@ async function submitData() {
     status.innerHTML = "❌ ERROR SUBMITTING DATA";
     status.style.color = "red";
   }
+  function updateDateTime() {
+  const now = new Date();
+
+  const date = now.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  });
+
+  const time = now.toLocaleTimeString("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  });
+
+  document.getElementById("currentDate").innerText = date;
+  document.getElementById("currentTime").innerText = time;
+}
+
+setInterval(updateDateTime, 1000);
+updateDateTime();
 }
 </script>
 
