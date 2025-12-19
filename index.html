@@ -255,7 +255,7 @@ function renderLot(){
   const lot = lotId(lotIndex);
   lotDisplay.textContent = lot;
   regInput.value = plates[lot] || "";
-  hintText.textContent = `LOT ${lot} / ${TOTAL_LOTS} (Swipe kiri/kanan pun boleh)`;
+  hintText.textContent = `LOT ${lot} / ${TOTAL_LOTS}`;
   regInput.focus();
 }
 
